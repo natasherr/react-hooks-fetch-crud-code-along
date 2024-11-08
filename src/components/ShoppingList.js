@@ -10,8 +10,7 @@ function ShoppingList() {
   useEffect(() => {
     fetch("http://localhost:4000/items")
      .then((res) => res.json())
-     .then((items) =>{setItems(items);
-     })
+     .then((items) => {return setItems(items)})
   }, [])
 
   function handleDeleteItem(deletedItem){
@@ -24,14 +23,13 @@ function ShoppingList() {
       if(item.id=== updatedItem.id){
         return updatedItem
       }
-      
       else{return item}
     })
     setItems(updatedItems)
   }
 
   function handleAddItem(newItem){
-    console.log([...items, newItem]);
+    setItems([...items, newItem]);
     
   }
 
